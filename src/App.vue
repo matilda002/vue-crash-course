@@ -1,9 +1,15 @@
 <template>
-  <h1>Add and subtract the total</h1>
+  <main>
+    <div id="container">
+      <h1>Add and subtract the total</h1>
 
-  <button @click="add">+1</button>
-  {{ number }}
-  <button @click="sub">-1</button>
+      <div id="countContainer">
+        <button class="btn" @click="add">+1</button>
+        <span id="numValue">{{ number }}</span>
+        <button class="btn" @click="sub">-1</button>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
