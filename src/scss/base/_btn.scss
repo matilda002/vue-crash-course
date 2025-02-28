@@ -1,10 +1,11 @@
 #countContainer {
     border-style: solid;
-    border-width: 1rem;
-    max-width: 80ch;
+    border-width: 0.5rem;
     padding: 1em 2em;
-    
-    .btn,
+    cursor: pointer;
+    margin: 1rem;
+
+    .popup,
     #numValue {
         background: #759275;
         margin: 2rem;
@@ -12,5 +13,9 @@
         font-weight: 600;
         font-size: 1.5rem;
         border-radius: 1rem;
+
+        &:hover {
+            background-color: #426842;
+        }
     }
 }
