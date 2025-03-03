@@ -14,7 +14,7 @@
 
 <script setup>
 import BtnComponent from "./components/Btn.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 let database = ref([
   {
@@ -36,8 +36,23 @@ let count = ref(0);
 function updateCount(action) {
   if (action === "add") {
     count.value++;
+    updateLocalStorage();
   } else if (action == "sub") {
     count.value--;
+    updateLocalStorage();
   }
 }
+
+onMounted(() => {
+  const savedCount = localStorage.getItem("count");
+  if (savedCount !== null) {
+    count.value = parseInt(savedCount, 10);
+  }
+});
+
+const updateLocalStorage = () => {
+  localStorage.setItem("count", count.value);
+  /* console.log("Updated count. New value in localStorage: " + localStorage.getItem("count")); */
+};
+
 </script>
