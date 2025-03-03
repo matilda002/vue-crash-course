@@ -1,5 +1,5 @@
 import './scss/main.scss'
-import './components/btnComponent.vue'
+import './components/Btn.vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'

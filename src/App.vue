@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import BtnComponent from "./components/btnComponent.vue";
+import BtnComponent from "./components/Btn.vue";
 import { ref } from "vue";
 
 let database = ref([

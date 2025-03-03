@@ -1,12 +1,10 @@
 <template>
-    <div id="container">
         <button class="popup" @click="handleCount">
             {{ btnText }}
             <div class="popup-content" ref="popupContent">
                 <img :src="src" :alt="alt" />
             </div>
         </button>
-    </div>
 </template>
 
 <script>
@@ -34,9 +32,8 @@ export default {
 </script>
 
 <style scoped>
-@import "../scss/main.scss";
+@import "../scss/base/_popup.scss";
 
-#container {
-    border-width: 0.3rem;
-}
+
+
 </style>
