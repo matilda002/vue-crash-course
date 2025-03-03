@@ -30,10 +30,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-@import "../scss/base/_popup.scss";
-
-
-
-</style>
