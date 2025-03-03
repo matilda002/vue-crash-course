@@ -3,7 +3,15 @@
     display: inline-block;
     cursor: pointer;
     margin: 2rem;
+    background: #759275;
+    padding: 1em 3em;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-radius: 1rem;
 
+    &:hover {
+        background-color: #426842;
+    }
     &-content {
         opacity: 0;
         width: 50px;
