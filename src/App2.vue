@@ -1,66 +1,82 @@
 <template>
-    <form @submit.prevent="addTask">
-        <label for="newTask">Add task</label>
-        <input type="text" name="newTask" id="newTask" v-model="newTask" />
-        <button type="submit">Submit</button>
-    </form>
+  <main>
+    <div id="container">
+      <h1>Add and subtract to the count</h1>
 
-    <h1>{{ name }}</h1>
-    <p v-if="status === 'active'">User is active</p>
-    <p v-else-if="status === 'pending'">User is pending</p>
-    <p v-else>User is inactive</p>
-
-    <h3>Tasks:</h3>
-    <ul>
-        <li v-for="(task, index) in tasks" :key="task">
-            <span>
-                {{ task }}
-                <button @click="deleteTask(index)">x</button>
-            </span>
-        </li>
-    </ul>
-
-    <button @click="toggleStatus">Change status</button>
+      <!-- Move the button it's own component, use probs for the text and img etc -->
+      <div id="countContainer">
+        <button class="popup" @click="
+          togglePopup();
+        add();
+        ">
+          +1
+          <div class="popup-content" ref="popup">
+            <img src="./assets/mario.svg" alt="Mario popup for adding one to the count" aria-hidden="true" />
+          </div>
+        </button>
+        <span id="numValue">{{ number }}</span>
+        <button class="popup" @click="
+          togglePopup2();
+        sub();
+        ">
+          -1
+          <div class="popup-content" ref="popup2">
+            <img src="./assets/goomba.svg" alt="Goomba popup for subtracting one from the count" aria-hidden="true" />
+          </div>
+        </button>
+      </div>
+    </div>
+  </main>
 </template>
 
-<script setup>
+<script>
 import { onMounted, ref } from "vue";
 
-const name = ref("John Doe");
-const status = ref("active");
-const tasks = ref(["Task One", "Task Two", "Task Three"]);
-const newTask = ref("");
+export default {
+  setup() {
+    const popup = ref(null);
+    const popup2 = ref(null);
+    const number = ref(0);
 
-const toggleStatus = () => {
-    if (status.value === "active") {
-        status.value = "pending";
-    } else if (status.value === "pending") {
-        status.value = "inactive";
-    } else {
-        status.value = "active";
+    // Toggle the visibility of the popup
+    function togglePopup() {
+      if (popup.value) {
+        popup.value.classList.toggle("show");
+      }
     }
-};
 
-const addTask = () => {
-    if (newTask.value.trim() !== "") {
-        tasks.value.push(newTask.value);
-        newTask.value = "";
+    function togglePopup2() {
+      if (popup2.value) {
+        popup2.value.classList.toggle("show");
+      }
     }
-};
 
-const deleteTask = (index) => {
-    tasks.value.splice(index, 1);
-};
+    onMounted(() => {
+      const savedNumber = localStorage.getItem("number");
+      if (savedNumber !== null) {
+        number.value = parseInt(savedNumber, 10);
+      }
+    });
 
-onMounted(async () => {
-    try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-        const data = await response.json();
-        tasks.value = data.map((task) => task.title);
-    } catch (error) {
-        console.log("Error fetching tasks");
+    const updateLocalStorage = () => {
+      localStorage.setItem("number", number.value);
+    };
+
+    function add() {
+      number.value++;
+      updateLocalStorage();
     }
-});
+
+    function sub() {
+      number.value--;
+      updateLocalStorage();
+    }
+
+    return { popup, popup2, number, togglePopup, togglePopup2, add, sub };
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+@import "./scss/main.scss";
+</style>
