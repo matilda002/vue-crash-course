@@ -1,15 +1,14 @@
 <template>
   <main>
-    <p>Current count: {{ count }}</p>
-    <BtnComponent
-      v-for="(item, index) in database"
-      :key="index"
-      :btnText="item.btnText"
-      :src="item.src"
-      :alt="item.alt"
-      :action="item.action"
-      @update-count="updateCount"
-    />
+    <div id="container">
+      <h1>Add and subtract to the count</h1>
+      <div id="countContainer">
+        <p>Current count: {{ count }}</p>
+        <BtnComponent v-for="(item, index) in database" :key="index" :btnText="item.btnText" :src="item.src"
+          :alt="item.alt" :action="item.action" @update-count="updateCount" />
+      </div>
+    </div>
+
   </main>
 </template>
 
