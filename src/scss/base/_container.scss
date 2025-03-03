@@ -11,9 +11,14 @@
 }
 
 #countContainer {
-    border-style: solid;
-    border-width: 0.5rem;
     padding: 1em 2em;
     cursor: pointer;
     margin: 1rem;
+
+    p {
+        padding: 1em;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-size: 200%;
+    }
 }
