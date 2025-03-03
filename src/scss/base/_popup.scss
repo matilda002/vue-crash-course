@@ -2,7 +2,7 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
-    margin: 2rem;
+    margin: 3rem 2rem;
     background: #759275;
     padding: 1em 3em;
     font-weight: 600;
@@ -12,22 +12,20 @@
     &:hover {
         background-color: #426842;
     }
+
     &-content {
         opacity: 0;
-        width: 50px;
-        height: 50px;
+        width: 3rem;
+        height: 3rem;
         position: absolute;
         bottom: 125%;
         left: 50%;
         transform: translateX(-50%);
         transition: opacity 0.3s ease-in-out;
-        z-index: 10;
-
 
         img {
             width: 100%;
             height: 100%;
-            border-radius: 8px;
             object-fit: cover;
         }
 
