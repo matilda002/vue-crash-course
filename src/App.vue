@@ -4,11 +4,17 @@
       <h1>Add and subtract to the count</h1>
       <div id="countContainer">
         <p>Current count: {{ count }}</p>
-        <BtnComponent v-for="(item, index) in database" :key="index" :btnText="item.btnText" :src="item.src"
-          :alt="item.alt" :action="item.action" @update-count="updateCount" />
+        <BtnComponent
+          v-for="(item, index) in database"
+          :key="index"
+          :btnText="item.btnText"
+          :src="item.src"
+          :alt="item.alt"
+          :action="item.action"
+          @update-count="updateCount"
+        />
       </div>
     </div>
-
   </main>
 </template>
 
@@ -54,5 +60,4 @@ const updateLocalStorage = () => {
   localStorage.setItem("count", count.value);
   /* console.log("Updated count. New value in localStorage: " + localStorage.getItem("count")); */
 };
-
 </script>
