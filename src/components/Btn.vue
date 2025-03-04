@@ -1,10 +1,10 @@
 <template>
-        <button class="popup" @click="handleCount">
-            {{ btnText }}
-            <div class="popup-content" ref="popupContent">
-                <img :src="src" :alt="alt" />
-            </div>
-        </button>
+    <button class="popup" @click="handleCount">
+        {{ btnText }}
+        <div class="popup-content" :class="{ show: isPopupVisible }">
+            <img :src="src" :alt="alt" />
+        </div>
+    </button>
 </template>
 
 <script>
@@ -16,16 +16,21 @@ export default {
         btnText: String,
         action: String,
     },
+    data() {
+        return {
+            isPopupVisible: false,
+        };
+    },
     methods: {
         handleCount() {
             this.$emit("update-count", this.action);
-            this.togglePopup();
+            this.showPopup();
         },
-        togglePopup() {
-            const popup = this.$refs.popupContent;
-            if (popup) {
-                popup.classList.toggle("show");
-            }
+        showPopup() {
+            this.isPopupVisible = true;
+            setTimeout(() => {
+                this.isPopupVisible = false;
+            }, 2000);
         },
     },
 };
