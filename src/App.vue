@@ -4,15 +4,8 @@
       <h1>Add and subtract to the count</h1>
       <div id="countContainer">
         <p>Current count: {{ count }}</p>
-        <BtnComponent
-          v-for="(item, index) in database"
-          :key="index"
-          :btnText="item.btnText"
-          :src="item.src"
-          :alt="item.alt"
-          :action="item.action"
-          @update-count="updateCount"
-        />
+        <BtnComponent v-for="(item, index) in database" :key="index" :btnText="item.btnText" :src="item.src"
+          :alt="item.alt" :action="item.action" @update-count="updateCount" />
       </div>
     </div>
   </main>
@@ -21,6 +14,12 @@
 <script setup>
 import BtnComponent from "./components/Btn.vue";
 import { onMounted, ref } from "vue";
+import mario from './assets/mario-yahoo.mp3';
+import goomba from './assets/goomba-stomp.mp3'
+
+let count = ref(0);
+const marioSound = new Audio(mario);
+const goombaSound = new Audio(goomba);
 
 let database = ref([
   {
@@ -37,15 +36,15 @@ let database = ref([
   },
 ]);
 
-let count = ref(0);
-
 function updateCount(action) {
   if (action === "add") {
     count.value++;
     updateLocalStorage();
+    marioSound.play();
   } else if (action == "sub") {
     count.value--;
     updateLocalStorage();
+    goombaSound.play();
   }
 }
 
@@ -58,6 +57,5 @@ onMounted(() => {
 
 const updateLocalStorage = () => {
   localStorage.setItem("count", count.value);
-  /* console.log("Updated count. New value in localStorage: " + localStorage.getItem("count")); */
 };
 </script>
