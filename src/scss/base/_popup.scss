@@ -3,14 +3,24 @@
     display: inline-block;
     cursor: pointer;
     margin: 3rem 2rem;
-    background: #759275;
+    background: #e79e59;
     padding: 1em 3em;
     font-weight: 600;
     font-size: 1.5rem;
     border-radius: 1rem;
+    border-color: #712E09;
+    border-width: 0.125em;
+    border-style: solid;
+    color: #712E09;
 
-    &:hover {
-        background-color: #426842;
+    &:hover,
+    &:active {
+        background-color: #ed892b;
+    }
+
+    &:focus {
+        outline: 0.15em solid #371605;
+        border-width: 0em;
     }
 
     &-content {
