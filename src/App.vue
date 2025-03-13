@@ -15,7 +15,7 @@
 import BtnComponent from "./components/Btn.vue";
 import { onMounted, ref } from "vue";
 import mario from './assets/mario-yahoo.mp3';
-import goomba from './assets/goomba-stomp.mp3'
+import goomba from './assets/goomba-stomp.mp3';
 
 let count = ref(0);
 const marioSound = new Audio(mario);
@@ -46,7 +46,7 @@ function updateCount(action) {
     updateLocalStorage();
     goombaSound.play();
   }
-}
+};
 
 onMounted(() => {
   const savedCount = localStorage.getItem("count");
